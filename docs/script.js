@@ -29,6 +29,10 @@ var food;
 
 $(document).ready(function() {
     $('body').keydown(keyPressedHandler);
+	
+	$('#loseMsg').hide();
+	
+	$('#nextRndMsg').hide();
 });
 
 function move() {
@@ -265,7 +269,7 @@ function GameBoard() {
 	
 	this.clearGameInfo = function() {
 		$('#score').html('0');
-		$('#loseMsg').css('visibility','hidden');
+		$('#loseMsg').hide();
 		$('#speed').html('1');
 	};
 	
@@ -288,14 +292,12 @@ function GameBoard() {
 	};
 	
 	this.showLoseMessage = function(){
-		$('#loseMsg').css('visibility','visible');
+		$('#loseMsg').fadeIn(50);
 	};
 	
 	this.showNextRoundMsg = function() {
-		$('#nextRndMsg').hide().css({visibility: 'visible'}).fadeIn(2000);
-		$('#nextRndMsg').fadeOut(2000, function() {
-				$(this).show().css({visibility: 'hidden'});
-			});
+		$('#nextRndMsg').fadeIn(2000);
+		$('#nextRndMsg').fadeOut(2000);
 			
 		var $currentSpeed = Number($('#speed').html());
 		$currentSpeed++;
